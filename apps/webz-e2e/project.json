@@ -1,0 +1,28 @@
+{
+  "root": "apps/webz-e2e",
+  "sourceRoot": "apps/webz-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/webz-e2e/cypress.json",
+        "devServerTarget": "webz:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "webz:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/webz-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["webz"]
+}

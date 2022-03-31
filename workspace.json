@@ -1,4 +1,7 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "webz": "apps/webz",
+    "webz-e2e": "apps/webz-e2e"
+  }
 }
