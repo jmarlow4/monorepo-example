@@ -2,7 +2,7 @@
   "projectType": "application",
   "root": "apps/webz",
   "sourceRoot": "apps/webz/src",
-  "prefix": "monorepo",
+  "prefix": "wbz",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -15,7 +15,10 @@
         "tsConfig": "apps/webz/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/webz/src/favicon.ico", "apps/webz/src/assets"],
-        "styles": ["apps/webz/src/styles.scss"],
+        "styles": [
+          "libs/xplat/web/scss/src/_index.scss",
+          "apps/webz/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {

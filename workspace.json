@@ -2,6 +2,13 @@
   "version": 2,
   "projects": {
     "webz": "apps/webz",
-    "webz-e2e": "apps/webz-e2e"
+    "webz-e2e": "apps/webz-e2e",
+    "xplat-core": "libs/xplat/core",
+    "xplat-features": "libs/xplat/features",
+    "xplat-scss": "libs/xplat/scss",
+    "xplat-utils": "libs/xplat/utils",
+    "xplat-web-core": "libs/xplat/web/core",
+    "xplat-web-features": "libs/xplat/web/features",
+    "xplat-web-scss": "libs/xplat/web/scss"
   }
 }

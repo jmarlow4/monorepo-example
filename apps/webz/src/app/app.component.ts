@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 
+// xplat
+import { AppBaseComponent } from '@monorepo/xplat/web/features';
+
 @Component({
-  selector: 'monorepo-root',
+  selector: 'wbz-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  title = 'webz';
+export class AppComponent extends AppBaseComponent {
+  constructor() {
+    super();
+  }
 }
