@@ -3767,20 +3767,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@simondotm/nx-firebase@npm:^0.3.3":
-  version: 0.3.3
-  resolution: "@simondotm/nx-firebase@npm:0.3.3"
-  dependencies:
-    fs-extra: ^10.0.0
-  peerDependencies:
-    "@nrwl/devkit": ">= 12.1.1"
-    "@nrwl/jest": ">= 12.1.1"
-    "@nrwl/linter": ">= 12.1.1"
-    "@nrwl/workspace": ">= 12.1.1"
-  checksum: f9919c88d2c6ca96d4e94ded322572e3cd442448bcff3f9d0fa61611c8ea2c2b9175a05d784e7fbc44217a102ea02b2f2d30a39778599eb5c479e44e1dd68a5a
-  languageName: node
-  linkType: hard
-
 "@sinonjs/commons@npm:^1.7.0":
   version: 1.8.3
   resolution: "@sinonjs/commons@npm:1.8.3"
@@ -11240,7 +11226,6 @@ __metadata:
     "@nstudio/web": 13.4.3
     "@nstudio/web-angular": 13.4.3
     "@nstudio/xplat": ^13.4.3
-    "@simondotm/nx-firebase": ^0.3.3
     "@types/jest": 27.0.2
     "@types/node": 16.11.7
     "@typescript-eslint/eslint-plugin": ~5.10.0

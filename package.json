@@ -68,7 +68,6 @@
     "@nestjs/platform-express": "^8.0.0",
     "@ngx-translate/core": "~14.0.0",
     "@ngx-translate/http-loader": "~7.0.0",
-    "@simondotm/nx-firebase": "^0.3.3",
     "core-js": "^3.6.5",
     "firebase": "^9.6.10",
     "reflect-metadata": "^0.1.13",
