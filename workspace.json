@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "api": "apps/api",
     "webz": "apps/webz",
     "webz-e2e": "apps/webz-e2e",
     "xplat-core": "libs/xplat/core",
