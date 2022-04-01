@@ -37,6 +37,10 @@
           ],
           "fileReplacements": [
             {
+              "replace": "libs/xplat/core/src/lib/environments/environment.ts",
+              "with": "libs/xplat/core/src/lib/environments/environment.prod.ts"
+            },
+            {
               "replace": "apps/webz/src/environments/environment.ts",
               "with": "apps/webz/src/environments/environment.prod.ts"
             }
@@ -49,7 +53,13 @@
           "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
-          "namedChunks": true
+          "namedChunks": true,
+          "fileReplacements": [
+            {
+              "replace": "libs/xplat/core/src/lib/environments/environment.ts",
+              "with": "libs/xplat/core/src/lib/environments/environment.dev.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"

@@ -19,6 +19,10 @@
           "inspect": false,
           "fileReplacements": [
             {
+              "replace": "libs/xplat/core/src/lib/environments/environment.ts",
+              "with": "libs/xplat/core/src/lib/environments/environment.prod.ts"
+            },
+            {
               "replace": "apps/api/src/environments/environment.ts",
               "with": "apps/api/src/environments/environment.prod.ts"
             }
