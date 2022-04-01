@@ -66,6 +66,7 @@
       },
       "defaultConfiguration": "development",
       "options": {
+        "browserTarget": "webz:build:development",
         "proxyConfig": "apps/webz/proxy.conf.json"
       }
     },
