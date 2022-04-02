@@ -1,8 +1,8 @@
-import { IEnvironment } from '@monorepo/xplat/core';
+import { IEnvironment } from '..';
 import { deepMerge } from '@monorepo/xplat/utils';
 import { environmentBase } from './environment.base';
 
-export const environmentProd = deepMerge(environmentBase, <IEnvironment>{
+export const environment = deepMerge(environmentBase, <IEnvironment>{
   production: true,
   // customizations here...
 });

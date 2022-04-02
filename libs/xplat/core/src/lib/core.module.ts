@@ -12,10 +12,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { throwIfAlreadyLoaded } from '@monorepo/xplat/utils';
 
 // app
-import { environment } from './environments/environment';
 import { LogService } from './services/log.service';
 import { PlatformLanguageToken } from './services/tokens';
 import { WindowService } from './services/window.service';
+import { environment } from './environments';
 
 /**
  * DEBUGGING

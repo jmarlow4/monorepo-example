@@ -1,4 +1,4 @@
-import { IEnvironment } from '../environment.interface';
+import { IEnvironment } from './environment.interface';
 
 /**
  * cSpell:disable
