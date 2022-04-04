@@ -69,7 +69,7 @@ const tslib_1 = __webpack_require__("tslib");
 const common_1 = __webpack_require__("@nestjs/common");
 let AppService = class AppService {
     getData() {
-        return { message: 'Welcome to api!' };
+        return { message: 'Hello from API!' };
     }
 };
 AppService = (0, tslib_1.__decorate)([
