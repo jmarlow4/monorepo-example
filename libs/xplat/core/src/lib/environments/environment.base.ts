@@ -6,6 +6,7 @@ import { IEnvironment } from './environment.interface';
  */
 export const environmentBase: IEnvironment = {
   production: false,
+  api: '/api',
   firebaseOptions: {
     apiKey: 'AIzaSyAVWzgZqYXbzlXuzCwsIsOJYzVNm1RJS7Y',
     authDomain: 'monorepo-ex.firebaseapp.com',

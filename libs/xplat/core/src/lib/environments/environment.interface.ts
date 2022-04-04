@@ -2,8 +2,9 @@
  * Workspace shared environment properties
  */
 export interface IEnvironment {
-  production?: boolean;
-  firebaseOptions?: {
+  production: boolean;
+  api: string;
+  firebaseOptions: {
     apiKey?: string;
     authDomain?: string;
     databaseURL?: string;
