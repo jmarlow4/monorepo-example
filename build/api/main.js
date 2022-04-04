@@ -142,9 +142,25 @@ const tslib_1 = __webpack_require__("tslib");
 const common_1 = __webpack_require__("@nestjs/common");
 const core_1 = __webpack_require__("@nestjs/core");
 const app_module_1 = __webpack_require__("./apps/api/src/app/app.module.ts");
+const whitelist = ['http://localhost:4200', 'https://monorepo-example.web.app'];
 function bootstrap() {
     return (0, tslib_1.__awaiter)(this, void 0, void 0, function* () {
         const app = yield core_1.NestFactory.create(app_module_1.AppModule);
+        app.enableCors({
+            origin: function (origin, callback) {
+                if (whitelist.indexOf(origin) !== -1) {
+                    console.log('allowed cors for:', origin);
+                    callback(null, true);
+                }
+                else {
+                    console.log('blocked cors for:', origin);
+                    callback(new Error('Not allowed by CORS'));
+                }
+            },
+            allowedHeaders: 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Observe',
+            methods: 'GET,PUT,POST,DELETE,UPDATE,OPTIONS',
+            credentials: true,
+        });
         const globalPrefix = 'api';
         app.setGlobalPrefix(globalPrefix);
         const port = process.env.PORT || 3333;
