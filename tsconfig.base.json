@@ -17,7 +17,7 @@
     "paths": {
       "@monorepo/xplat/core": ["libs/xplat/core/src/index.ts"],
       "@monorepo/xplat/environments": [
-        "libs/xplat/core/src/lib/environments/base/index.ts"
+        "libs/xplat/core/src/lib/environments/index.ts"
       ],
       "@monorepo/xplat/features": ["libs/xplat/features/src/index.ts"],
       "@monorepo/xplat/utils": ["libs/xplat/utils/src/index.ts"],
