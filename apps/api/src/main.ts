@@ -8,7 +8,7 @@ import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
 
-const whitelist = ['http://localhost:4200', 'https://monorepo-example.web.app'];
+const whitelist = ['http://localhost:4200', 'https://monorepo-ex.web.app'];
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
