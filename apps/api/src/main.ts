@@ -8,12 +8,17 @@ import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
 
-const whitelist = ['http://localhost:4200', 'https://monorepo-ex.web.app'];
+const whitelist = [
+  'http://localhost:4200',
+  'http://localhost:8080',
+  'https://monorepo-ex.web.app',
+];
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
     origin: function (origin, callback) {
+      console.log('cors origin:', origin);
       if (whitelist.indexOf(origin) !== -1) {
         console.log('allowed cors for:', origin);
         callback(null, true);
