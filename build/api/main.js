@@ -80,6 +80,19 @@ exports.AppService = AppService;
 
 /***/ }),
 
+/***/ "./apps/api/src/environments/environment.ts":
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.environment = void 0;
+exports.environment = {
+    production: false,
+};
+
+
+/***/ }),
+
 /***/ "@nestjs/common":
 /***/ ((module) => {
 
@@ -142,18 +155,14 @@ const tslib_1 = __webpack_require__("tslib");
 const common_1 = __webpack_require__("@nestjs/common");
 const core_1 = __webpack_require__("@nestjs/core");
 const app_module_1 = __webpack_require__("./apps/api/src/app/app.module.ts");
-const whitelist = [
-    'http://localhost:4200',
-    'http://localhost:8080',
-    'https://monorepo-ex.web.app',
-];
+const environment_1 = __webpack_require__("./apps/api/src/environments/environment.ts");
+const whitelist = ['http://localhost:4200', 'https://monorepo-ex.web.app'];
 function bootstrap() {
     return (0, tslib_1.__awaiter)(this, void 0, void 0, function* () {
         const app = yield core_1.NestFactory.create(app_module_1.AppModule);
         app.enableCors({
             origin: function (origin, callback) {
-                console.log('cors origin:', origin);
-                if (whitelist.indexOf(origin) !== -1) {
+                if (!environment_1.environment.production || whitelist.indexOf(origin) !== -1) {
                     console.log('allowed cors for:', origin);
                     callback(null, true);
                 }

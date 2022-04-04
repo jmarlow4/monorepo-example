@@ -28,14 +28,32 @@
               "with": "apps/api/src/environments/environment.prod.ts"
             }
           ]
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "inspect": true,
+          "fileReplacements": [
+            {
+              "replace": "libs/xplat/core/src/lib/environments/environment.ts",
+              "with": "libs/xplat/core/src/lib/environments/environment.dev.ts"
+            }
+          ]
         }
-      }
+      },
+      "defaultConfiguration": "production"
     },
     "serve": {
       "executor": "@nrwl/node:node",
-      "options": {
-        "buildTarget": "api:build"
-      }
+      "configurations": {
+        "production": {
+          "buildTarget": "api:build:production"
+        },
+        "development": {
+          "buildTarget": "api:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
