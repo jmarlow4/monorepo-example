@@ -4,7 +4,7 @@ FROM node:16-alpine
 # ENV JWT_SECRET=${JWT_SECRET}
 WORKDIR /usr/src/app
 
-COPY . .
+COPY build/api .
 RUN yarn install
 
 CMD PORT=8080 node main.js
