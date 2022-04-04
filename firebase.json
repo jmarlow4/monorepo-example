@@ -10,7 +10,7 @@
     ]
   },
   "hosting": {
-    "public": "dist/apps/webz",
+    "public": "build/webz",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
