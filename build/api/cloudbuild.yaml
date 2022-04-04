@@ -9,8 +9,6 @@ steps:
       - '-f'
       - build/api/Dockerfile
       - .
-      - '--build-arg'
-      - 'PORT=8080'
     id: Build
   - name: gcr.io/cloud-builders/docker
     args:
