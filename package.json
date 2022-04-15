@@ -7,7 +7,8 @@
     "start-api": "nx run api:serve",
     "build": "nx build",
     "test": "nx test",
-    "postinstall": "ngcc --properties es2015 browser module main"
+    "postinstall": "ngcc --properties es2015 browser module main",
+    "prepare": "husky install"
   },
   "private": true,
   "devDependencies": {
@@ -54,6 +55,9 @@
     "nx": "13.9.5",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",
+    "stylelint": "^14.7.0",
+    "stylelint-config-prettier-scss": "^0.0.1",
+    "stylelint-config-standard-scss": "^3.0.0",
     "tailwindcss": "^3.0.2",
     "ts-jest": "27.0.5",
     "typescript": "~4.5.2"
@@ -71,6 +75,7 @@
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
     "@monorepo/xplat-scss": "file:libs/xplat/scss/src",
+    "@monorepo/xplat-web-scss": "file:libs/xplat/web/scss/src",
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
@@ -92,5 +97,18 @@
   "packageManager": "yarn@1.23.0",
   "volta": {
     "node": "16.4.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "npx nx run-many --target=lint --all --exclude=xplat-scss,xplat-web-scss"
+    ],
+    "**/*.scss": [
+      "npx stylelint '**/*.scss'"
+    ]
   }
 }
