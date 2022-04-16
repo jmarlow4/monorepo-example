@@ -1,8 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
  * Platform check helpers
  */
 
-declare var NSObject: any, NSString: any, android: any, java: any, window: any;
+declare const NSObject: any,
+  NSString: any,
+  android: any,
+  java: any,
+  window: any;
 
 /**
  * Electron helpers

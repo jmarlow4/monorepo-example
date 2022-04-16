@@ -28,6 +28,7 @@ LogService.DEBUG.LEVEL_4 = !environment.production;
 export class CoreModule {
   // configuredProviders: *required to configure WindowService and others per platform
   static forRoot(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     configuredProviders: Array<any>
   ): ModuleWithProviders<CoreModule> {
     return {

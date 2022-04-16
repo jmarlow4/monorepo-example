@@ -1,4 +1,4 @@
-import { Directive, Inject } from '@angular/core';
+import { Directive } from '@angular/core';
 // libs
 import { BaseComponent } from '@monorepo/xplat/core';
 

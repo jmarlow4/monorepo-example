@@ -1,3 +1,6 @@
+
+@use 'sass:map';
+
 /**
  * Convenient spacing classes
  */
@@ -97,8 +100,8 @@ $spacers: (
 @each $prop, $abbrev in (margin: m, padding: p) {
   // sass-lint:enable-all
   @each $size, $lengths in $spacers {
-    $length-x: map-get($lengths, x);
-    $length-y: map-get($lengths, y);
+    $length-x: map.get($lengths, x);
+    $length-y: map.get($lengths, y);
 
     // sass-lint:disable-all
     .#{$abbrev}-#{$size} {

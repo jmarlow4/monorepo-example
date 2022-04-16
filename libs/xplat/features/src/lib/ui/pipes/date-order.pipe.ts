@@ -5,6 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   pure: true,
 })
 export class DateOrderPipe implements PipeTransform {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   transform(value: any[], sortBy: string): any {
     if (value) {
       return value.sort((a, b) => {

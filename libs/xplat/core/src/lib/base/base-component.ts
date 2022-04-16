@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 
 @Directive()
 export abstract class BaseComponent implements OnDestroy {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _destroy$?: Subject<any>;
 
   get destroy$() {

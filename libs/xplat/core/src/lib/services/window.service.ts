@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types  */
+
 // angular
-import { Injectable, Inject, ViewContainerRef } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 
 // app
 import { isObject, isNativeScript } from '@monorepo/xplat/utils';
