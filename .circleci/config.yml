@@ -28,16 +28,18 @@ jobs:
       - run:
           command: npx nx-cloud start-agent
           no_output_timeout: 60m
-    main:
-      environment:
-        NX_CLOUD_DISTRIBUTED_EXECUTION: 'true'
-      steps:
-        - checkout
-        - run: npm install
-        - nx/set-shas
-        - run: npx nx affected --base=$NX_BASE --target=build --parallel --max-parallel=3
-        - run: npx nx affected --base=$NX_BASE --target=test --parallel --max-parallel=2
-        - run: npx nx-cloud stop-all-agents
+  main:
+    docker:
+      - image: cimg/node:16.10
+    environment:
+      NX_CLOUD_DISTRIBUTED_EXECUTION: 'true'
+    steps:
+      - checkout
+      - run: npm install
+      - nx/set-shas
+      - run: npx nx affected --base=$NX_BASE --target=build --parallel --max-parallel=3
+      - run: npx nx affected --base=$NX_BASE --target=test --parallel --max-parallel=2
+      - run: npx nx-cloud stop-all-agents
 
 workflows:
   build:
