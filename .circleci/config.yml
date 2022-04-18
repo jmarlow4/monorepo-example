@@ -2,15 +2,6 @@ version: 2.1
 orbs:  
   nx: nrwl/nx@1.0.0
 jobs:
-  agent:
-    docker:
-      - image: cimg/node:16.10
-    steps:
-      - checkout
-      - run: npm install
-      - run:
-          command: npx nx-cloud start-agent
-          no_output_timeout: 60m
   main:
     docker:
       - image: cimg/node:16.10
@@ -20,9 +11,8 @@ jobs:
       - checkout
       - run: npm install
       - nx/set-shas
-      - run: npx nx affected --base=$NX_BASE --target=build --parallel --max-parallel=3
-      - run: npx nx affected --base=$NX_BASE --target=test --parallel --max-parallel=2
-      - run: npx nx-cloud stop-all-agents
+      - run: npx nx affected --base=$NX_BASE --target=build
+      - run: npx nx affected --base=$NX_BASE --target=test
   pr:
     docker:
       - image: cimg/node:16.10
@@ -32,18 +22,11 @@ jobs:
       - checkout
       - run: npm install
       - nx/set-shas
-      - run: npx nx affected --base=$NX_BASE --target=build --parallel --max-parallel=3
-      - run: npx nx affected --base=$NX_BASE --target=test --parallel --max-parallel=2
-      - run: npx nx-cloud stop-all-agents
+      - run: npx nx affected --base=$NX_BASE --target=build
+      - run: npx nx affected --base=$NX_BASE --target=test
 workflows:
   build:
     jobs:
-      - agent:
-          name: 'agent1'
-      - agent:
-          name: 'agent2'
-      - agent:
-          name: 'agent3'
       - main:
           filters:
             branches:
