@@ -20,7 +20,7 @@ jobs:
         uses: 'google-github-actions/auth@v0'
         with:
           workload_identity_provider: 'projects/103289758081/locations/global/workloadIdentityPools/monorepo-ex-workload-id-pool/providers/monorepo-ex-wl-pool-provider'
-          service_account: 'github-action-476488461@monorepo-ex.iam.gserviceaccount.com',
+          service_account: 'github-action-476488461@monorepo-ex.iam.gserviceaccount.com'
           project_id: 'monorepo-ex'
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v0'
