@@ -4,6 +4,13 @@
   "sourceRoot": "apps/webz/src",
   "prefix": "wbz",
   "targets": {
+    "echo": {
+      "builder": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["NX_TEST=hello && echo $NX_TEST"],
+        "parallel": false
+      }
+    },
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
