@@ -6,5 +6,5 @@ WORKDIR /usr/src/app
 
 COPY dist/apps/api .
 RUN yarn install
-
+EXPOSE 8080
 CMD PORT=8080 node main.js
