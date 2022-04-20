@@ -73,7 +73,14 @@
     "deploy": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "commands": ["echo $SHORT_SHA"]
+        "commands": [
+          "docker build --no-cache -t monorepo-api-image:$SHORT_SHA -f build/api/Dockerfile .",
+          "gcloud auth configure-docker us-central1-docker.pkg.dev --quiet",
+          "docker tag monorepo-api-image:latest us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest",
+          "docker tag monorepo-api-image:latest us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:$SHORT_SHA",
+          "docker push us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest",
+          "docker push us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:$SHORT_SHA"
+        ]
       }
     }
   },
