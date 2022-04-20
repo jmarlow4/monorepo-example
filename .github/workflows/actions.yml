@@ -18,9 +18,9 @@ jobs:
     steps:
       - name: Set outputs
         id: vars
-        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+        run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
       - name: Check outputs
-        run: echo ${{ steps.vars.outputs.sha_short }}
+        run: echo ${SHORT_SHA}
       - id: 'auth'
         uses: 'google-github-actions/auth@v0'
         with:
@@ -43,7 +43,7 @@ jobs:
       - run: npx nx-cloud start-ci-run    
       - run: npx nx affected --target=build --parallel --max-parallel=3
       - run: npx nx affected --target=test --parallel --max-parallel=2
-      - run: SHA_SHORT=${{ steps.vars.outputs.sha_short }} npx nx run api:deploy
+      - run: SHA_SHORT=${SHORT_SHA} npx nx run api:deploy
       - run: npx nx-cloud stop-all-agents
   pr:
     runs-on: ubuntu-latest
