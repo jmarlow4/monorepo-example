@@ -73,6 +73,7 @@
     "deploy": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
+        "parallel": false,
         "commands": [
           "docker build --no-cache --platform=linux/amd64 -t monorepo-api-image -f build/api/Dockerfile .",
           "gcloud auth configure-docker us-central1-docker.pkg.dev --quiet",
