@@ -17,9 +17,9 @@ jobs:
     if: ${{ github.event_name != 'pull_request' }}
     steps:
       - id: 'auth'
-        uses: 'google-github-actions/setup-gcloud@master'
+        uses: 'google-github-actions/setup-gcloud@v0'
         with:
-          service_account_key: 'projects/103289758081/locations/global/workloadIdentityPools/monorepo-ex-workload-id-pool/providers/monorepo-ex-wl-pool-provider'
+          service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
           project_id: 'monorepo-ex'
           export_default_credentials: true
 
