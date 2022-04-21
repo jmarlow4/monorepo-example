@@ -74,7 +74,7 @@
       "executor": "@nrwl/workspace:run-commands",
       "options": {
         "parallel": false,
-        "commands": ["pwd", "ls -la"]
+        "commands": ["pwd", "ls -la", "ls -la dist/apps/api"]
       }
     }
   },
