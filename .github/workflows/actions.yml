@@ -44,12 +44,12 @@ jobs:
           node-version: '16.14'
       - run: yarn install
       - run: npx nx-cloud start-ci-run    
+      # - run: npx nx affected --target=test --parallel --max-parallel=2
       - run: npx nx run-many --target=build --all --parallel --max-parallel=3
       - uses: actions/upload-artifact@v3
         with:
           name: api-dist
           path: dist/apps/api/
-      # - run: npx nx affected --target=test --parallel --max-parallel=2
       - run: npx nx run api:deploy --skip-nx-cache
       - uses: actions/download-artifact@v3
         with:
