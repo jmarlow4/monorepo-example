@@ -16,6 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event_name != 'pull_request' }}
     steps:
+      - uses: actions/checkout@v3
+        name: Checkout [main]
+        with:
+          fetch-depth: 0
 
       - name: Set outputs
         id: vars
@@ -29,14 +33,12 @@ jobs:
         with:
           credentials_json: ${{ secrets.SERVICE_ACCOUNT_KEY }}
           export_environment_variables: true
+          create_credentials_file: true
 
-      - name: 'Use gcloud CLI'
-        run: 'gcloud info'
+      - id: 'gcloud'
+        name: 'gcloud'
+        run: gcloud secrets versions access "latest" --secret "my-secret"
 
-      - uses: actions/checkout@v2
-        name: Checkout [main]
-        with:
-          fetch-depth: 0
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v2
       - uses: actions/setup-node@v1 
