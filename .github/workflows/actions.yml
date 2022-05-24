@@ -34,10 +34,19 @@ jobs:
           credentials_json: ${{ secrets.SERVICE_ACCOUNT_KEY }}
           export_environment_variables: true
           create_credentials_file: true
+      - uses: actions/upload-artifact@v3
+        with:
+          name: gcloud-cred
+          path: ${GOOGLE_APPLICATION_CREDENTIALS}
+      
+      - name: Check creds
+        run: echo ${GOOGLE_APPLICATION_CREDENTIALS}
+      - name: Check creds path
+        run: echo ${GOOGLE_GHA_CREDS_PATH}
 
-      - id: 'gcloud'
-        name: 'gcloud'
-        run: gcloud secrets versions access "latest" --secret "my-secret"
+      # - id: 'gcloud'
+      #   name: 'gcloud'
+      #   run: gcloud secrets versions access "latest" --secret "my-secret"
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v2
