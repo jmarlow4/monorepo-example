@@ -76,7 +76,9 @@
         "parallel": false,
         "commands": [
           "docker build --no-cache --platform=linux/amd64 -t monorepo-api-image -f build/api/Dockerfile .",
-          "gcloud auth login --cred-file=",
+          "echo ${{env.GOOGLE_GHA_CREDS_PATH}}",
+          "echo ${{env.SHORT_SHA}}",
+          "gcloud auth login --cred-file=${{env.GOOGLE_GHA_CREDS_PATH}}",
           "gcloud auth print-access-token",
           "gcloud auth configure-docker --quiet",
           "gcloud auth configure-docker us-central1-docker.pkg.dev --quiet",
