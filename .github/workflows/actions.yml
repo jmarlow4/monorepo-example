@@ -53,7 +53,7 @@ jobs:
           name: api-dist
           path: dist/apps/api/
       # - run: npx nx run api:deploy --skip-nx-cache
-        run: |-
+      - run: |-
           docker build --no-cache --platform=linux/amd64 -t monorepo-api-image -f build/api/Dockerfile .
           gcloud auth print-access-token
           gcloud auth configure-docker --quiet
