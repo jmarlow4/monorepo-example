@@ -37,7 +37,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: gcloud-cred
-          path: /home/runner/work/monorepo-example/monorepo-example/
+          path: echo ${GOOGLE_GHA_CREDS_PATH}
       - name: LS
         run: ls -la
       
