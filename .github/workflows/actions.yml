@@ -48,25 +48,33 @@ jobs:
       - uses: actions/setup-node@v1 
         with: 
           node-version: '16.14'
+      
+      - name: download shit
+        uses: actions/download-artifact@v3
+        with:
+          name: gcloud-cred
+          path: ./
+      - run: ls -la
+      
       # - run: yarn install
       # - run: npx nx-cloud start-ci-run    
-      # # - run: npx nx affected --target=test --parallel --max-parallel=2
+      # # # - run: npx nx affected --target=test --parallel --max-parallel=2
       # - run: npx nx run-many --target=build --all --parallel --max-parallel=3
-      # # - uses: actions/upload-artifact@v3
-      # #   with:
-      # #     name: api-dist
-      # #     path: dist/apps/api/
-      # # - run: npx nx run api:deploy --skip-nx-cache
-      # - run: |-
-      #     docker build --no-cache --platform=linux/amd64 -t monorepo-api-image -f build/api/Dockerfile .
-      #     gcloud auth configure-docker --quiet
-      #     gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
-      #     docker tag monorepo-api-image us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest
-      #     docker push us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest
-      # # - uses: actions/download-artifact@v3
-      # #   with:
-      # #     name: api-dist
-      # #     path: dist/apps/api/
+      # # # - uses: actions/upload-artifact@v3
+      # # #   with:
+      # # #     name: api-dist
+      # # #     path: dist/apps/api/
+      # - run: npx nx run api:deploy --skip-nx-cache
+      # # - run: |-
+      # #     docker build --no-cache --platform=linux/amd64 -t monorepo-api-image -f build/api/Dockerfile .
+      # #     gcloud auth configure-docker --quiet
+      # #     gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+      # #     docker tag monorepo-api-image us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest
+      # #     docker push us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest
+      # - uses: actions/download-artifact@v3
+      #   with:
+      #     name: api-dist
+      #     path: dist/apps/api/
       - run: npx nx-cloud stop-all-agents
   pr:
     runs-on: ubuntu-latest
