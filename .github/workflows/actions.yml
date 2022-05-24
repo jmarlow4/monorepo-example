@@ -37,14 +37,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: gcloud-cred
-          path: echo ${GOOGLE_GHA_CREDS_PATH}
-      - name: LS
-        run: ls -la
-      
-      - name: Check creds
-        run: echo ${GOOGLE_APPLICATION_CREDENTIALS}
-      - name: Check creds path
-        run: echo ${GOOGLE_GHA_CREDS_PATH}
+          path: ${{ env.GOOGLE_GHA_CREDS_PATH }}
 
       # - id: 'gcloud'
       #   name: 'gcloud'
