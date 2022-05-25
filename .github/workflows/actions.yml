@@ -52,7 +52,7 @@ jobs:
       - run: yarn
       - run: npx nx-cloud start-ci-run    
       # # # - run: npx nx affected --target=test --parallel --max-parallel=2
-      - run: npx nx run-many --target=build --all --parallel --max-parallel=3
+      - run: npx nx affected --target=build --parallel --max-parallel=3
       # - uses: actions/upload-artifact@v3
       #   with:
       #     name: api-dist
@@ -63,20 +63,46 @@ jobs:
       #     name: gcloud-cred
       #     path: ./
       # - run: GOOGLE_CREDS=${{ env.GOOGLE_GHA_CREDS_PATH }} && npx nx run api:deploy --skip-nx-cache
-      - run: |-
-          if [ -e ./dist/apps/api/ ]
-            then
-              docker build --no-cache --platform=linux/amd64 -t monorepo-api-image -f build/api/Dockerfile .
-              gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
-              docker tag monorepo-api-image us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest
-              docker push us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest
-          fi
+      - name: Check if API built
+        id: check_api_build
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "dist/apps/api"
+
+      - name: API build dir exists
+        if: steps.check_api_build.outputs.files_exists == 'true'
+        run: |-
+          docker build --no-cache --platform=linux/amd64 -t monorepo-api-image -f build/api/Dockerfile .
+          gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+          docker tag monorepo-api-image us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest
+          docker push us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest
         shell: bash
+      - name: 'deploy API'
+        if: steps.check_api_build.outputs.files_exists == 'true'
+        uses: 'google-github-actions/deploy-cloudrun@v0'
+        with:
+          service: 'monorepo-ex-api'
+          image: 'us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest'
+
+      - name: Check if Webz built
+        id: check_api_build
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "dist/apps/api"
+
+      - name: 'deploy Webz'
+        if: steps.check_api_build.outputs.files_exists == 'true'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.SERVICE_ACCOUNT_KEY }}"
+          projectId: monorepo-ex
+          channelId: live
       # - uses: actions/download-artifact@v3
       #   with:
       #     name: api-dist
       #     path: dist/apps/api/
-      # - run: npx nx-cloud stop-all-agents
+      - run: npx nx-cloud stop-all-agents
   pr:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'pull_request' }}
