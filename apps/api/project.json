@@ -70,27 +70,13 @@
         "passWithNoTests": true
       }
     },
-    "deploy-test": {
-      "executor": "@nrwl/workspace:run-commands",
-      "options": {
-        "parallel": false,
-        "commands": [
-          "ls -la",
-          "gcloud auth login --cred-file=$GOOGLE_GHA_CREDS_PATH",
-          "gcloud auth print-access-token"
-        ]
-      }
-    },
     "deploy": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
         "parallel": false,
         "commands": [
           "docker build --no-cache --platform=linux/amd64 -t monorepo-api-image -f build/api/Dockerfile .",
-          "echo ${{env.GOOGLE_GHA_CREDS_PATH}}",
-          "echo ${{env.SHORT_SHA}}",
-          "gcloud auth login --cred-file=${{env.GOOGLE_GHA_CREDS_PATH}}",
-          "gcloud auth print-access-token",
+          "gcloud auth login --cred-file=$GOOGLE_CREDS",
           "gcloud auth configure-docker --quiet",
           "gcloud auth configure-docker us-central1-docker.pkg.dev --quiet",
           "docker tag monorepo-api-image us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest",

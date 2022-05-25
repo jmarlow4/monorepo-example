@@ -5,8 +5,8 @@ on:
       - main
   pull_request:
 
-# env:
-#   NX_CLOUD_DISTRIBUTED_EXECUTION: true
+env:
+  NX_CLOUD_DISTRIBUTED_EXECUTION: true
 
 jobs:
   main:
@@ -50,19 +50,19 @@ jobs:
           node-version: '16.14'
       
       - run: yarn add nx
-      # - run: npx nx-cloud start-ci-run    
+      - run: npx nx-cloud start-ci-run    
       # # # - run: npx nx affected --target=test --parallel --max-parallel=2
-      # - run: npx nx run-many --target=build --all --parallel --max-parallel=3
-      # - uses: actions/upload-artifact@v3
-      #   with:
-      #     name: api-dist
-      #     path: dist/apps/api/
+      - run: npx nx run-many --target=build --all --parallel --max-parallel=3
+      - uses: actions/upload-artifact@v3
+        with:
+          name: api-dist
+          path: dist/apps/api/
       # - uses: actions/download-artifact@v3
       #   with:
       #     name: gcloud-cred
       #     path: ${{ env.GOOGLE_GHA_CREDS_PATH }}
-      - run: ls -la
-      - run: GOOGLE_GHA_CREDS_PATH=${{ env.GOOGLE_GHA_CREDS_PATH }} && npx nx run api:deploy-test --skip-nx-cache
+      # - run: ls -la
+      - run: GOOGLE_CREDS=${{ env.GOOGLE_GHA_CREDS_PATH }} && npx nx run api:deploy --skip-nx-cache
       # # - run: |-
       # #     docker build --no-cache --platform=linux/amd64 -t monorepo-api-image -f build/api/Dockerfile .
       # #     gcloud auth configure-docker --quiet
@@ -73,7 +73,7 @@ jobs:
       #   with:
       #     name: api-dist
       #     path: dist/apps/api/
-      # - run: npx nx-cloud stop-all-agents
+      - run: npx nx-cloud stop-all-agents
   pr:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'pull_request' }}
