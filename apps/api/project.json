@@ -70,6 +70,13 @@
         "passWithNoTests": true
       }
     },
+    "deploy-test": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": ["echo $GOOGLE_GHA_CREDS_PATH"]
+      }
+    },
     "deploy": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
