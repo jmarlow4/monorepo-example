@@ -34,10 +34,10 @@ jobs:
           credentials_json: ${{ secrets.SERVICE_ACCOUNT_KEY }}
           export_environment_variables: true
           create_credentials_file: true
-      - uses: actions/upload-artifact@v3
-        with:
-          name: gcloud-cred
-          path: ${{ env.GOOGLE_GHA_CREDS_PATH }}
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: gcloud-cred
+      #     path: ${{ env.GOOGLE_GHA_CREDS_PATH }}
 
       # - id: 'gcloud'
       #   name: 'gcloud'
@@ -53,27 +53,30 @@ jobs:
       - run: npx nx-cloud start-ci-run    
       # # # - run: npx nx affected --target=test --parallel --max-parallel=2
       - run: npx nx run-many --target=build --all --parallel --max-parallel=3
-      - uses: actions/upload-artifact@v3
-        with:
-          name: api-dist
-          path: dist/apps/api/
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: api-dist
+      #     path: dist/apps/api/
       # - run: ls -la
-      - uses: actions/download-artifact@v3
-        with:
-          name: gcloud-cred
-          path: ./
-      - run: GOOGLE_CREDS=${{ env.GOOGLE_GHA_CREDS_PATH }} && npx nx run api:deploy --skip-nx-cache
-      # # - run: |-
-      # #     docker build --no-cache --platform=linux/amd64 -t monorepo-api-image -f build/api/Dockerfile .
-      # #     gcloud auth configure-docker --quiet
-      # #     gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
-      # #     docker tag monorepo-api-image us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest
-      # #     docker push us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest
-      - uses: actions/download-artifact@v3
-        with:
-          name: api-dist
-          path: dist/apps/api/
-      - run: npx nx-cloud stop-all-agents
+      # - uses: actions/download-artifact@v3
+      #   with:
+      #     name: gcloud-cred
+      #     path: ./
+      # - run: GOOGLE_CREDS=${{ env.GOOGLE_GHA_CREDS_PATH }} && npx nx run api:deploy --skip-nx-cache
+      - run: |-
+          if [ -e ./dist/apps/api/ ]
+            then
+              docker build --no-cache --platform=linux/amd64 -t monorepo-api-image -f build/api/Dockerfile .
+              gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+              docker tag monorepo-api-image us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest
+              docker push us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest
+          fi
+        shell: bash
+      # - uses: actions/download-artifact@v3
+      #   with:
+      #     name: api-dist
+      #     path: dist/apps/api/
+      # - run: npx nx-cloud stop-all-agents
   pr:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'pull_request' }}
