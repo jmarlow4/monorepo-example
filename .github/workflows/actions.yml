@@ -57,11 +57,11 @@ jobs:
       #   with:
       #     name: api-dist
       #     path: dist/apps/api/
-      - run: GOOGLE_GHA_CREDS_PATH=${{ env.GOOGLE_GHA_CREDS_PATH }} && npx nx run api:deploy-test --skip-nx-cache
-        uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v3
         with:
           name: gcloud-cred
           path: ${{ env.GOOGLE_GHA_CREDS_PATH }}
+      - run: GOOGLE_GHA_CREDS_PATH=${{ env.GOOGLE_GHA_CREDS_PATH }} && npx nx run api:deploy-test --skip-nx-cache
       # # - run: |-
       # #     docker build --no-cache --platform=linux/amd64 -t monorepo-api-image -f build/api/Dockerfile .
       # #     gcloud auth configure-docker --quiet
