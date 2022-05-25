@@ -75,6 +75,7 @@
       "options": {
         "parallel": false,
         "commands": [
+          "ls -la",
           "gcloud auth login --cred-file=$GOOGLE_GHA_CREDS_PATH",
           "gcloud auth print-access-token"
         ]
