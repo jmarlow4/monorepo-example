@@ -85,13 +85,13 @@ jobs:
           image: 'us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest'
 
       - name: Check if Webz built
-        id: check_api_build
+        id: check_webz_build
         uses: andstor/file-existence-action@v1
         with:
-          files: "dist/apps/api"
+          files: "dist/apps/webz"
 
       - name: 'deploy Webz'
-        if: steps.check_api_build.outputs.files_exists == 'true'
+        if: steps.check_webz_build.outputs.files_exists == 'true'
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
