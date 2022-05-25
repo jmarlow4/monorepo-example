@@ -56,8 +56,8 @@ jobs:
           path: ./
       - run: ls -la
       
-      # - run: yarn install
-      # - run: npx nx-cloud start-ci-run    
+      - run: yarn install nx
+      - run: npx nx-cloud start-ci-run    
       # # # - run: npx nx affected --target=test --parallel --max-parallel=2
       # - run: npx nx run-many --target=build --all --parallel --max-parallel=3
       # - uses: actions/upload-artifact@v3
@@ -75,7 +75,7 @@ jobs:
       #   with:
       #     name: api-dist
       #     path: dist/apps/api/
-      # - run: npx nx-cloud stop-all-agents
+      - run: npx nx-cloud stop-all-agents
   pr:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'pull_request' }}
