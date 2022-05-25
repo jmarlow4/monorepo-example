@@ -78,7 +78,7 @@
           "docker build --no-cache --platform=linux/amd64 -t monorepo-api-image -f build/api/Dockerfile .",
           "ls -la",
           "cat $GOOGLE_CREDS",
-          "gcloud auth login --cred-file=$GOOGLE_CREDS --project=monorepo-ex",
+          "gcloud auth activate-service-account github-action-476488461@monorepo-ex.iam.gserviceaccount.com --key-file=$GOOGLE_CREDS",
           "gcloud auth configure-docker --quiet",
           "gcloud auth configure-docker us-central1-docker.pkg.dev --quiet",
           "docker tag monorepo-api-image us-central1-docker.pkg.dev/monorepo-ex/monorepo-ex-api/monorepo-api-image:latest",

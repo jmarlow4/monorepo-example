@@ -34,10 +34,10 @@ jobs:
           credentials_json: ${{ secrets.SERVICE_ACCOUNT_KEY }}
           export_environment_variables: true
           create_credentials_file: true
-      # - uses: actions/upload-artifact@v3
-      #   with:
-      #     name: gcloud-cred
-      #     path: ${{ env.GOOGLE_GHA_CREDS_PATH }}
+      - uses: actions/upload-artifact@v3
+        with:
+          name: gcloud-cred
+          path: ${{ env.GOOGLE_GHA_CREDS_PATH }}
 
       # - id: 'gcloud'
       #   name: 'gcloud'
@@ -57,10 +57,10 @@ jobs:
         with:
           name: api-dist
           path: dist/apps/api/
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     name: gcloud-cred
-      #     path: ${{ env.GOOGLE_GHA_CREDS_PATH }}
+      - uses: actions/download-artifact@v3
+        with:
+          name: gcloud-cred
+          path: ${{ env.GOOGLE_GHA_CREDS_PATH }}
       # - run: ls -la
       - run: GOOGLE_CREDS=${{ env.GOOGLE_GHA_CREDS_PATH }} && npx nx run api:deploy --skip-nx-cache
       # # - run: |-
