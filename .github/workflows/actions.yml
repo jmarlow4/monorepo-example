@@ -5,8 +5,8 @@ on:
       - main
   pull_request:
 
-env:
-  NX_CLOUD_DISTRIBUTED_EXECUTION: true
+# env:
+#   NX_CLOUD_DISTRIBUTED_EXECUTION: true
 
 jobs:
   main:
@@ -57,7 +57,7 @@ jobs:
       - run: ls -la
       
       - run: yarn add nx
-      - run: npx nx-cloud start-ci-run    
+      # - run: npx nx-cloud start-ci-run    
       # # # - run: npx nx affected --target=test --parallel --max-parallel=2
       # - run: npx nx run-many --target=build --all --parallel --max-parallel=3
       # - uses: actions/upload-artifact@v3
@@ -75,7 +75,7 @@ jobs:
       #   with:
       #     name: api-dist
       #     path: dist/apps/api/
-      - run: npx nx-cloud stop-all-agents
+      # - run: npx nx-cloud stop-all-agents
   pr:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'pull_request' }}
@@ -98,14 +98,14 @@ jobs:
     runs-on: ubuntu-latest
     name: Agent 1
     timeout-minutes: 60
-    strategy:
-      matrix:
-        agent: [ 1, 2, 3 ]
+    # strategy:
+    #   matrix:
+    #     agent: [ 1, 2, 3 ]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with: 
           node-version: '16.14'
       - run: npm install
-      - name: Start Nx Agent ${{ matrix.agent }}
-        run: npx nx-cloud start-agent  
+      # - name: Start Nx Agent ${{ matrix.agent }}
+      #   run: npx nx-cloud start-agent  
