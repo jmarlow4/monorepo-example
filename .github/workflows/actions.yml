@@ -62,7 +62,6 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: gcloud-cred
-          path: ${{ env.GOOGLE_GHA_CREDS_PATH }}
       # # - run: |-
       # #     docker build --no-cache --platform=linux/amd64 -t monorepo-api-image -f build/api/Dockerfile .
       # #     gcloud auth configure-docker --quiet
