@@ -74,7 +74,7 @@
       "executor": "@nrwl/workspace:run-commands",
       "options": {
         "parallel": false,
-        "commands": ["echo $GOOGLE_GHA_CREDS_PATH"]
+        "commands": ["gcloud auth login --cred-file=$GOOGLE_GHA_CREDS_PATH"]
       }
     },
     "deploy": {
