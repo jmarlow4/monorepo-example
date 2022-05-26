@@ -70,6 +70,12 @@
         "passWithNoTests": true
       }
     },
+    "deploy-test": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": []
+      }
+    },
     "deploy": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
