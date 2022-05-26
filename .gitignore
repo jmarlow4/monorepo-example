@@ -44,3 +44,5 @@ Thumbs.db
 !.yarn/sdks
 !.yarn/versions
 .angular
+
+firebase-debug.log

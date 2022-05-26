@@ -1,0 +1,34 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/functions/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/functions",
+        "main": "apps/functions/src/index.ts",
+        "tsConfig": "apps/functions/tsconfig.json"
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "functions:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "functions:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["npx eslint -c ./apps/functions/.eslintrc.json"]
+      }
+    }
+  },
+  "tags": []
+}
