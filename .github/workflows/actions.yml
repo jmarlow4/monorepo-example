@@ -72,11 +72,12 @@ jobs:
           files: "dist/apps/webz"
       - name: 'deploy Webz'
         if: steps.check_webz_build.outputs.files_exists == 'true'
-        uses: w9jds/firebase-action@master
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          args: deploy --only hosting
-        env:
-          GCP_SA_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.SERVICE_ACCOUNT_KEY }}'
+          channelId: live
+          projectId: monorepo-ex
 
       - name: Check if Functions built
         id: check_functions_build
