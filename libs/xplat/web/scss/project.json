@@ -1,5 +1,5 @@
 {
-  "root": "libs/xplat/web/scss",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/xplat/web/scss/src",
   "projectType": "library",
   "targets": {

@@ -1,11 +1,11 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "root": "apps/webz",
   "sourceRoot": "apps/webz/src",
   "prefix": "wbz",
   "targets": {
     "echo": {
-      "builder": "@nrwl/workspace:run-commands",
+      "executor": "@nrwl/workspace:run-commands",
       "options": {
         "commands": ["NX_TEST=hello && echo $NX_TEST"],
         "parallel": false
