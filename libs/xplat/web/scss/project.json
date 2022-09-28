@@ -13,7 +13,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/xplat/web/scss"],
       "options": {
-        "jestConfig": "libs/xplat/web/scss/jest.config.js",
+        "jestConfig": "libs/xplat/web/scss/jest.config.ts",
         "passWithNoTests": true
       }
     }

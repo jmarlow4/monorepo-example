@@ -1,3 +1,4 @@
+/* eslint-disable */
 module.exports = {
   displayName: 'webz',
   preset: '../../jest.preset.js',

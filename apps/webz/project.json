@@ -103,7 +103,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/webz"],
       "options": {
-        "jestConfig": "apps/webz/jest.config.js",
+        "jestConfig": "apps/webz/jest.config.ts",
         "passWithNoTests": true
       }
     }

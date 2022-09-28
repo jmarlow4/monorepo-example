@@ -1,15 +1,15 @@
+/* eslint-disable */
 module.exports = {
-  displayName: 'xplat-utils',
+  displayName: 'xplat-scss',
   preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
-  testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../coverage/libs/xplat/utils',
+  coverageDirectory: '../../../coverage/libs/xplat/scss',
 };

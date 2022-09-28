@@ -14,7 +14,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/xplat/utils"],
       "options": {
-        "jestConfig": "libs/xplat/utils/jest.config.js",
+        "jestConfig": "libs/xplat/utils/jest.config.ts",
         "passWithNoTests": true
       }
     }
