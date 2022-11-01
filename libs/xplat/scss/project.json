@@ -4,14 +4,14 @@
   "projectType": "library",
   "targets": {
     "lint": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "command": "npx stylelint 'libs/xplat/web/scss/**/*.scss'"
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/xplat/scss"],
+      "outputs": ["{workspaceRoot}/coverage/libs/xplat/scss"],
       "options": {
         "jestConfig": "libs/xplat/scss/jest.config.ts",
         "passWithNoTests": true

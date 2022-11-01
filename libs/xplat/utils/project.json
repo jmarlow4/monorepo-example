@@ -12,7 +12,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/xplat/utils"],
+      "outputs": ["{workspaceRoot}/coverage/libs/xplat/utils"],
       "options": {
         "jestConfig": "libs/xplat/utils/jest.config.ts",
         "passWithNoTests": true

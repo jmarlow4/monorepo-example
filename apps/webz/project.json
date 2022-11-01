@@ -5,7 +5,7 @@
   "prefix": "wbz",
   "targets": {
     "echo": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": ["NX_TEST=hello && echo $NX_TEST"],
         "parallel": false
@@ -101,7 +101,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/webz"],
+      "outputs": ["{workspaceRoot}/coverage/apps/webz"],
       "options": {
         "jestConfig": "apps/webz/jest.config.ts",
         "passWithNoTests": true
