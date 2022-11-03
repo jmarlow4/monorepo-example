@@ -7,8 +7,4 @@ import { AppBaseComponent } from '@monorepo/xplat/web/features';
   selector: 'wbz-root',
   templateUrl: './app.component.html',
 })
-export class AppComponent extends AppBaseComponent {
-  constructor() {
-    super();
-  }
-}
+export class AppComponent extends AppBaseComponent {}
